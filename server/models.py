@@ -18,6 +18,7 @@ class User(db.Model):
     audit_logs = db.relationship('AuditLog', back_populates='user', cascade='all, delete')
     messages = db.relationship('Message', back_populates='user', cascade='all, delete')
     volunteer = db.relationship('Volunteer', uselist=False, back_populates='user', cascade='all, delete')
+    admin = db.relationship('Admin', uselist=False, back_populates='user', cascade='all, delete')
 
     def to_dict(self):
         return {
@@ -64,7 +65,7 @@ class Recipient(db.Model):
     phone_number = db.Column(db.String(20))
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
 
-    allocations = db.relationship('Allocation', backref='recipient', lazy=True)
+    allocations = db.relationship('Allocation', back_populates='recipient', lazy=True)
 
     def to_dict(self):
         return {
@@ -84,7 +85,7 @@ class Service(db.Model):
     description = db.Column(db.Text)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
 
-    allocations = db.relationship('Allocation', backref='service', lazy=True)
+    allocations = db.relationship('Allocation', back_populates='service', lazy=True)
 
     def to_dict(self):
         return {
@@ -152,6 +153,8 @@ class AuditLog(db.Model):
     description = db.Column(db.Text, nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
 
+    user = db.relationship('User', back_populates='audit_logs')
+
     def to_dict(self):
         return {
             "id": self.id, 
@@ -183,12 +186,15 @@ class Message(db.Model):
     __tablename__ = 'messages'
 
     id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id', ondelete='CASCADE'), nullable=False)
     full_name = db.Column(db.String(255), nullable=False)
     email = db.Column(db.String(255), nullable=False)
     subject = db.Column(db.String(255), nullable=False)
     message = db.Column(db.Text, nullable=False)
     status = db.Column(db.String(50), default='unread', nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
+
+    user = db.relationship('User', back_populates='messages')
 
     def to_dict(self):
         return {
@@ -223,6 +229,14 @@ class Partner(db.Model):
             "created_at": self.created_at
         }
 
+# Association table for many-to-many relationship between Volunteer and Activity
+volunteer_activity = db.Table(
+    'volunteer_activity',
+    db.Column('volunteer_id', db.Integer, db.ForeignKey('volunteers.id', ondelete='CASCADE'), primary_key=True),
+    db.Column('activity_id', db.Integer, db.ForeignKey('activities.id', ondelete='CASCADE'), primary_key=True)
+)
+
+
 class Volunteer(db.Model):
     __tablename__ = 'volunteers'
 
@@ -233,7 +247,7 @@ class Volunteer(db.Model):
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
 
     user = db.relationship('User', back_populates='volunteer')
-    activity = db.relationship('Activity', back_populates='volunteers')
+    activity = db.relationship('Activity', secondary=volunteer_activity, back_populates='volunteers')
 
     def to_dict(self):
         return {
@@ -254,7 +268,7 @@ class Activity(db.Model):
     location = db.Column(db.String(255))
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
 
-    volunteers = db.relationship('Volunteer', backref='activity', lazy=True)
+    volunteers = db.relationship('Volunteer', secondary=volunteer_activity, back_populates='activity', lazy=True)
 
     def to_dict(self):
         return {
