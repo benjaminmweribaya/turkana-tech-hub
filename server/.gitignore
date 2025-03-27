@@ -1,0 +1,42 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+.env
+
+# Flask instance and logs
+instance/
+*.log
+
+# Database files
+*.sqlite3
+*.db
+
+# Pytest cache
+.pytest_cache/
+
+# VS Code settings
+.vscode/
+
+# IDE / Editor
+*.swp
+*.swo
+.idea/
+
+# Pip dependency file
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Docker
+*.dockerignore
+docker-compose.override.yml
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
