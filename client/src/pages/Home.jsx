@@ -87,6 +87,11 @@ const Home = () => {
               Donate Now
             </Button>
           </Link>
+          <Link to="/volunteer">
+            <Button variant="contained" color="secondary" className="text-lg px-6 py-3 mt-4">
+              Become a Volunteer
+            </Button>
+          </Link>
       </section>
     </div>
   );
