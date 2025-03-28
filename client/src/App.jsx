@@ -15,9 +15,8 @@ function App() {
   const { translate } = useContext(LanguageContext);
 
   return (
-    <ThemeProvider>
       <Router>
-        <div className="flex flex-col min-h-screen">
+        <div className="min-h-screen flex flex-col">
           <NavBar />
           <main className="flex-grow">
             <Routes>
@@ -33,7 +32,6 @@ function App() {
           <Footer />
         </div>
       </Router>
-    </ThemeProvider>
   );
 }
 

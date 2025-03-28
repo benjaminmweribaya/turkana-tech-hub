@@ -1,6 +1,5 @@
 import { Button, Card, CardContent, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
-import techHubLogo from '../assets/techhub-logo.png';
 import statehouseBg from '../assets/Statehouse.jpg';
 
 const Home = () => {
@@ -13,7 +12,6 @@ const Home = () => {
       >
         <div className="absolute inset-0 bg-black bg-opacity-50"></div>
         <div className="relative z-10 text-center px-4">
-          <img src={techHubLogo} alt="Turkana Tech Youths Hub" className="mx-auto w-32 mb-4" />
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
             Empowering Turkana's Youth through Innovation & Skills
           </h1>
