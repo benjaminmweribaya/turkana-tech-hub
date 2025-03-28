@@ -25,10 +25,20 @@ load_dotenv()
 
 # Initialize Flask app
 app = Flask(__name__)
-CORS(app)
+CORS(
+    app , 
+    resources={r"/*": {"origins": "*"}}, 
+    supports_credentials=True, 
+    methods=["GET", "POST", "PUT", "DELETE"], 
+    headers=["Content-Type", "Authorization"]
+)
+
+# Secret Key Configuration
+app.config["SECRET_KEY"] = os.getenv("SECRET_KEY", "default_secret_key")
 
 # Database Configuration
-app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("DATABASE_URL", "sqlite:///database.db")
+DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///database.db")
+app.config["SQLALCHEMY_DATABASE_URI"] = DATABASE_URL
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 # Initialize Database and Migrations
