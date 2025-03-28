@@ -1,11 +1,10 @@
 import { useState } from "react";
-import { TextField, Button, CircularProgress } from "@mui/material";
+import { TextField, Button, CircularProgress, Dialog, DialogTitle, DialogContent, DialogActions, IconButton } from "@mui/material";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import Modal from "./Modal";
+import CloseIcon from "@mui/icons-material/Close";
 
-const VolunteerForm = () => {
-  const [open, setOpen] = useState(false);
+const VolunteerForm = ({ open, onClose }) => {
   const [loading, setLoading] = useState(false);
 
   // Form Validation Schema
@@ -23,20 +22,23 @@ const VolunteerForm = () => {
     setTimeout(() => {
       console.log("Volunteer Data Submitted:", values);
       setLoading(false);
-      setOpen(false);
+      onClose();
       resetForm();
     }, 2000);
   };
 
   return (
-    <>
-      {/* Button to Open Modal */}
-      <Button onClick={() => setOpen(true)} variant="contained" color="primary" className="mt-4">
-        Apply as a Volunteer
-      </Button>
+    <Dialog open={open} onClose={onClose} fullWidth maxWidth="sm">
+      {/* Modal Header */}
+      <DialogTitle className="flex justify-between items-center bg-blue-600 text-white">
+        Volunteer Application
+        <IconButton onClick={onClose} className="text-white">
+          <CloseIcon />
+        </IconButton>
+      </DialogTitle>
 
-      {/* Modal Form */}
-      <Modal open={open} onClose={() => setOpen(false)} title="Volunteer Application">
+      {/* Modal Content */}
+      <DialogContent className="p-4">
         <Formik
           initialValues={{
             fullName: "",
@@ -79,8 +81,15 @@ const VolunteerForm = () => {
             </Form>
           )}
         </Formik>
-      </Modal>
-    </>
+      </DialogContent>
+
+      {/* Modal Footer */}
+      <DialogActions className="p-4">
+        <Button onClick={onClose} className="text-blue-600">
+          Close
+        </Button>
+      </DialogActions>
+    </Dialog>
   );
 };
 

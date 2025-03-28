@@ -2,8 +2,12 @@ import { Button, Card, CardContent, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import statehouseBg from '../assets/Statehouse.jpg';
+import VolunteerForm from '../components/VolunteerForm';
+import { useState } from 'react';
 
 const Home = () => {
+  const [volunteerOpen, setVolunteerOpen] = useState(false);
+
   return (
     <div>
       {/* Hero Section */}
@@ -76,23 +80,24 @@ const Home = () => {
 
       {/* Call to Action */}
       <section className="bg-white text-black py-16 px-6 md:px-20 flex flex-col items-center text-center">
-          <Typography variant="h4" className="font-bold mb-6">
-            Get Involved & Support Our Cause
-          </Typography>
-          <Typography className="mb-6 max-w-2xl mx-auto text-black/80">
-            Join us in making a difference. Your support can help create a better future for the youth of Turkana, Kenya.
-          </Typography>
-          <Link to="/donate">
-            <Button variant="contained" color="secondary" className="text-lg px-6 py-3">
-              Donate Now
-            </Button>
-          </Link>
-          <Link to="/volunteer">
-            <Button variant="contained" color="secondary" className="text-lg px-6 py-3 mt-4">
-              Become a Volunteer
-            </Button>
-          </Link>
+        <Typography variant="h4" className="font-bold mb-6">
+          Get Involved & Support Our Cause
+        </Typography>
+        <Typography className="mb-6 max-w-2xl mx-auto text-black/80">
+          Join us in making a difference. Your support can help create a better future for the youth of Turkana, Kenya.
+        </Typography>
+        <Link to="/donate">
+          <Button variant="contained" color="secondary" className="text-lg px-6 py-3">
+            Donate Now
+          </Button>
+        </Link>
+        <Button onClick={() => setVolunteerOpen(true)} variant="contained" color="primary" className="text-lg px-6 py-3">
+          Volunteer
+        </Button>
       </section>
+
+      {/* Volunteer Form Modal */}
+      <VolunteerForm open={volunteerOpen} onClose={() => setVolunteerOpen(false)} />
     </div>
   );
 };
