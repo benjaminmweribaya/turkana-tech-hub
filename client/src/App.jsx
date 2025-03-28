@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { ThemeProvider } from './context/ThemeContext';
+import { useContext } from "react";
+import { LanguageContext } from "./context/LanguageContext";
 import NavBar from './components/NavBar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
@@ -11,6 +12,8 @@ import Accessibility from './pages/Accessibility';
 import Donate from './pages/Donate';
 
 function App() {
+  const { translate } = useContext(LanguageContext);
+
   return (
     <ThemeProvider>
       <Router>
