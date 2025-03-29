@@ -1,8 +1,5 @@
 import { useState, useContext } from "react";
 import {
-    AppBar,
-    Toolbar,
-    Typography,
     IconButton,
     Drawer,
     List,
@@ -12,7 +9,7 @@ import {
     Select,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-import CloseIcon from "@mui/icons-material/Close"; 
+import CloseIcon from "@mui/icons-material/Close";
 import { Link } from "react-router-dom";
 import DarkModeToggle from "./DarkModeToggle";
 import { LanguageContext } from "../context/LanguageContext";
@@ -35,47 +32,50 @@ const NavBar = () => {
     ];
 
     return (
-        <AppBar position="sticky" className="bg-white shadow-md">
-            <Toolbar className="flex justify-between items-center max-w-screen-xl mx-auto px-6 py-3">
+        <header className="bg-black shadow-md w-full">
+            <div className="max-w-screen-xl mx-auto flex justify-between items-center px-6 py-4">
                 {/* Logo with adjusted size */}
-                <div className="flex items-center space-x-3">
+                <div className="flex items-center space-x-4">
                     <img src={techHubLogo} alt="Tech Hub Logo" className="h-12 w-auto" />
-                    <Typography variant="h6" className="text-black-900 font-bold hidden sm:block">
+                    <span className="text-white font-bold hidden sm:block">
                         Turkana Tech Youths Hub
-                    </Typography>
+                    </span>
                 </div>
 
                 {/* Desktop Navigation */}
-                <div className="hidden md:flex items-center space-x-3">
+                <div className="hidden md:flex items-center space-x-6">
                     {navItems.map((item) => (
                         <Link
                             key={item.label}
                             to={item.path}
-                            className="text-gray-800 hover:text-blue-600 font-medium transition px-4"
+                            className="text-white hover:text-blue-600 font-medium transition px-4"
                         >
                             {item.label}
                         </Link>
                     ))}
 
                     {/* Language Selector */}
-                    <Select
-                        value={language}
-                        onChange={(e) => setLanguage(e.target.value)}
-                        className="bg-white border border-gray-300 rounded-md p-1 text-gray-700"
-                    >
-                        <MenuItem value="en">English</MenuItem>
-                        <MenuItem value="sw">Swahili</MenuItem>
-                    </Select>
+                    <div>
+                        <Select
+                            value={language}
+                            onChange={(e) => setLanguage(e.target.value)}
+                            className="bg-white border border-gray-500 rounded-md p-1 text-black"
+                        >
+                            <MenuItem value="en">English</MenuItem>
+                            <MenuItem value="sw">Swahili</MenuItem>
+                        </Select>
+                    </div>
+
                     <DarkModeToggle />
                 </div>
 
                 {/* Mobile Menu Button */}
                 <div className="md:hidden flex items-center">
                     <IconButton edge="end" color="inherit" onClick={handleDrawerToggle}>
-                        <MenuIcon className="text-blue-700" />
+                        <MenuIcon className="text-white " />
                     </IconButton>
                 </div>
-            </Toolbar>
+            </div>
 
             {/* Mobile Drawer */}
             <Drawer anchor="right" open={mobileOpen} onClose={handleDrawerToggle}>
@@ -111,7 +111,7 @@ const NavBar = () => {
                     </List>
                 </div>
             </Drawer>
-        </AppBar>
+        </header>
     );
 };
 
