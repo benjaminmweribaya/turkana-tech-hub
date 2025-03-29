@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState } from "react";
 import {
     IconButton,
     Drawer,
@@ -12,23 +12,23 @@ import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 import { Link } from "react-router-dom";
 import DarkModeToggle from "./DarkModeToggle";
-import { LanguageContext } from "../context/LanguageContext";
 import techHubLogo from "../assets/techhub-logo.png";
+import useLanguage from "../hooks/useLanguage";
 
 const NavBar = () => {
     const [mobileOpen, setMobileOpen] = useState(false);
-    const { language, setLanguage } = useContext(LanguageContext);
+    const { language, setLanguage, translate } = useLanguage();
 
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen);
     };
 
     const navItems = [
-        { label: "Home", path: "/" },
-        { label: "About", path: "/about" },
-        { label: "Services", path: "/services" },
-        { label: "Contact", path: "/contact" },
-        { label: "Donate", path: "/donate" },
+        { label: translate("home"), path: "/" },
+        { label: translate("about"), path: "/about" },
+        { label: translate("services"), path: "/services" },
+        { label: translate("contact"), path: "/contact" },
+        { label: translate("donate"), path: "/donate" },
     ];
 
     return (
