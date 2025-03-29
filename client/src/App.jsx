@@ -1,4 +1,5 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
 import NavBar from './components/NavBar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
@@ -10,9 +11,30 @@ import Accessibility from './pages/Accessibility';
 import TermsAndConditions from './pages/Terms&Conditions';
 import Donate from './pages/Donate';
 
+const formatTitle = (path) => {
+  if (path === "/") return "HOME - TURKANA TECH YOUTHS HUB";
+
+  const words = path.replace("/", "").replace(/-/g, " ").split(" ");
+
+  const capitalized = words.map(word => word.toUpperCase());
+
+  return `${capitalized.join(" ")} - TURKANA TECH YOUTHS HUB`;
+};
+
+const PageTitleUpdater = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    document.title = formatTitle(location.pathname);
+  }, [location.pathname]);
+
+  return null; 
+};
+
 function App() {
   return (
     <Router>
+      <PageTitleUpdater />
       <div className="min-h-screen flex flex-col">
         <NavBar />
         <main className="flex-grow">
