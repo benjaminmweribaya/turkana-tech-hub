@@ -86,14 +86,17 @@ const Home = () => {
         <Typography className="mb-6 max-w-2xl mx-auto text-black/80">
           Join us in making a difference. Your support can help create a better future for the youth of Turkana, Kenya.
         </Typography>
-        <Link to="/donate">
-          <Button variant="contained" color="secondary" className="text-lg px-6 py-3">
-            Donate Now
+
+        <div className="flex flex-col md:flex-row gap-4">
+          <Link to="/donate">
+            <Button variant="contained" color="secondary" className="text-lg px-6 py-3">
+              Donate Now
+            </Button>
+          </Link>
+          <Button onClick={() => setVolunteerOpen(true)} variant="contained" color="primary" className="text-lg px-6 py-3">
+            Volunteer
           </Button>
-        </Link>
-        <Button onClick={() => setVolunteerOpen(true)} variant="contained" color="primary" className="text-lg px-6 py-3">
-          Volunteer
-        </Button>
+        </div>
       </section>
 
       {/* Volunteer Form Modal */}
