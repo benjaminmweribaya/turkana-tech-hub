@@ -31,7 +31,7 @@ const About = () => {
     <div>
       {/* Hero Section */}
       <section className="relative h-[60vh] bg-green-600 flex items-center justify-center text-white text-center px-6">
-        <div className="max-w-3xl">
+        <div className="max-w-6xl">
           <Typography variant="h3" className="font-bold mb-4">
             ABOUT US
           </Typography>
@@ -44,7 +44,7 @@ const About = () => {
 
       {/* Vision & Mission */}
       <section className="py-16 px-6 md:px-20">
-        <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-6 max-w-6xl mx-auto">
           <Card className="shadow-lg">
             <CardContent>
               <Typography variant="h5" className="font-bold mb-2 text-blue-700">
@@ -77,7 +77,7 @@ const About = () => {
           <Typography variant="h4" className="font-bold mb-6 text-gray-900">
             Our Partners
           </Typography>
-          <Typography className="max-w-3xl mx-auto mb-6 text-gray-700">
+          <Typography className="max-w-6xl mx-auto mb-6 text-gray-700">
             We collaborate with various organizations to enhance the impact of our initiatives.
           </Typography>
         </div>
@@ -106,7 +106,7 @@ const About = () => {
           <Typography variant="h4" className="font-bold mb-6 text-gray-900">
             Awards & Grants
           </Typography>
-          <Typography className="max-w-3xl mx-auto text-gray-700">
+          <Typography className="max-w-6xl mx-auto text-gray-700">
             Turkana Tech Youths Hub has received several awards and grants in recognition of our innovative
             environmental initiatives and youth empowerment programs.
           </Typography>
@@ -120,7 +120,7 @@ const About = () => {
           }}
           autoPlay={true}
           infinite={true}
-          className="mx-auto w-3/4"
+          className="mx-auto w-full"
         >
           {awardImages.map((image, index) => (
             <div key={index} className="p-2">
@@ -136,7 +136,7 @@ const About = () => {
           <Typography variant="h4" className="font-bold mb-6 text-white">
             Frequently Asked Questions
           </Typography>
-          <div className="max-w-3xl mx-auto text-left">
+          <div className="max-w-6xl mx-auto text-left">
             {faqs.map((faq, index) => (
               <Accordion key={index} className="bg-white mb-2 rounded-lg">
                 <AccordionSummary expandIcon={<ExpandMoreIcon />} className="font-bold text-gray-900">

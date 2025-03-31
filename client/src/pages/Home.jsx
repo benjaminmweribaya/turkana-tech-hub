@@ -37,7 +37,7 @@ const Home = () => {
         <Typography variant="h4" className="font-bold mb-4 text-black">
           Turkana Tech Youths Hub Community Based Organisation
         </Typography>
-        <Typography className="max-w-3xl mx-auto text-black/80">
+        <Typography className="max-w-6xl mx-auto text-black/80">
           We are a social enterprise committed to transforming the lives of youth in Turkana, Kenya,
           through hands-on skills training and sustainable development initiatives.
         </Typography>
@@ -48,7 +48,7 @@ const Home = () => {
         <Typography variant="h4" className="font-bold text-center mb-6 text-black">
           Our Core Values
         </Typography>
-        <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
           {[
             { title: 'Empowerment', desc: 'Committing to empowering youths by providing access to skills and opportunities that foster self-reliance and personal growth.' },
             { title: 'Community-Centered', desc: 'Prioritizing the needs of the community, ensuring that programs and initiatives align with local aspirations and contribute to collective well-being.' },
@@ -84,7 +84,7 @@ const Home = () => {
         <Typography variant="h4" className="font-bold mb-6">
           Get Involved & Support Our Cause
         </Typography>
-        <Typography className="mb-6 max-w-2xl mx-auto text-black/80">
+        <Typography className="mb-6 max-w-6xl mx-auto text-black/80">
           Join us in making a difference. Your support can help create a better future for the youth of Turkana, Kenya.
         </Typography>
 

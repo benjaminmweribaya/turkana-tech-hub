@@ -52,7 +52,7 @@ const Services = () => {
     <div>
       {/* Hero Section */}
       <section className="relative h-[50vh] bg-green-600 flex items-center justify-center text-white text-center px-6">
-        <div className="max-w-3xl">
+        <div className="max-w-6xl">
           <Typography variant="h3" className="font-bold mb-4">
             OUR SERVICES & INITIATIVES
           </Typography>
@@ -124,7 +124,7 @@ const Services = () => {
         <Typography variant="h4" className="font-bold mb-6 text-white">
           GET INVOLVED
         </Typography>
-        <Typography className="max-w-3xl mx-auto mb-6 text-white">
+        <Typography className="max-w-6xl mx-auto mb-6 text-white">
           Join us in making a difference! Whether through volunteering, partnerships, or donations,
           your support helps us create a brighter future for Turkana's youth.
         </Typography>
