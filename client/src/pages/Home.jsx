@@ -1,9 +1,10 @@
 import { Button, Card, CardContent, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import statehouseBg from '../assets/Statehouse.jpg';
 import VolunteerForm from '../components/VolunteerForm';
 import { useState } from 'react';
+
+const statehouseBg = '/assets/Statehouse.jpg';
 
 const Home = () => {
   const [volunteerOpen, setVolunteerOpen] = useState(false);

@@ -12,7 +12,6 @@ import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 import { Link } from "react-router-dom";
 import DarkModeToggle from "./DarkModeToggle";
-import techHubLogo from "../assets/techhub-logo.png";
 import useLanguage from "../hooks/useLanguage";
 
 const NavBar = () => {
@@ -36,7 +35,7 @@ const NavBar = () => {
             <div className="max-w-screen-xl mx-auto flex justify-between items-center px-6 py-4">
                 {/* Logo with adjusted size */}
                 <div className="flex items-center space-x-4">
-                    <img src={techHubLogo} alt="Tech Hub Logo" className="h-12 w-auto" />
+                    <img src="/assets/techhub-logo.png" alt="Tech Hub Logo" className="h-12 w-auto" />
                     <span className="text-white font-bold hidden sm:block">
                         Turkana Tech Youths Hub
                     </span>
